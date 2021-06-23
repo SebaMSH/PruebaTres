@@ -1,3 +1,4 @@
+from core.forms import ProveedoresForm, PaisForm
 from django.shortcuts import render,redirect
 from .models import Proveedores
 
@@ -26,9 +27,59 @@ def sismos(request):
 def home(request):
     return redirect(to="index")
 
-def listar_proveedores(request):
-    proveedores = Proveedores.objects.all()
+def ingreso_proveedor(request):
     datos = {
-        "proveedores" : proveedores
+        'form' : ProveedoresForm()
     }
-    return render(request, 'core/listar_proveedores.html', datos)
+
+    if request.method == 'POST':
+        formulario = ProveedoresForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            datos['mensaje'] = "Proveedor ingresado correctamente"
+    return render(request, 'core/ingreso_proveedor.html',datos)
+
+def ingreso_pais(request):
+    datos = {
+        'form' : PaisForm()
+    }
+
+    if request.method == 'POST':
+        formulario = PaisForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            datos['mensaje'] = "Pais ingresado correctamente"
+    return render(request, 'core/ingreso_pais.html',datos)
+
+def listar_proveedor(request):
+    Proveedor = Proveedores.objects.all()
+    datos = {
+        "Proveedor" : Proveedor
+    }
+    return render(request, 'core/listar_proveedor.html',datos)
+
+def form_del_proveedor(request, id):
+
+    proveedor = Proveedores.objects.get(idProveedor=id)
+
+    proveedor.delete()
+    
+    return redirect(to="home")
+
+def form_mod_proveedor(request, id):
+
+    proveedor = Proveedores.objects.get(idProveedor=id)
+
+    datos = {
+        'form' : ProveedoresForm(instance=proveedor)
+    }
+
+    if request.method == 'POST':
+        formulariomod = ProveedoresForm(request.POST, instance=proveedor)
+        if formulariomod.is_valid:
+            formulariomod.save()
+            datos['form'] = formulariomod
+            datos['mensaje'] = "Modificados correctamente"
+
+    return render(request, 'core/form_mod_proveedor.html', datos)
+
