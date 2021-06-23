@@ -24,3 +24,5 @@ def sismos(request):
 
 def home(request):
     return redirect(to="index")
+def proveedor(request):
+    return render(request, 'core/proveedor.html')
