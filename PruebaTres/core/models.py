@@ -16,5 +16,6 @@ class Proveedores(models.Model):
     Mail = models.CharField(max_length=50, verbose_name="E-mail Proveedor")
     Pass = models.CharField(max_length=20, verbose_name="Password Proveedor")
     IdPais = models.ForeignKey(Pais, on_delete=models.CASCADE)
-def __str__(self):
+
+    def __str__(self):
         return self.Nombre

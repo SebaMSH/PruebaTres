@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from .models import Proveedores
 
 # Create your views here.
 def index(request):
@@ -24,3 +25,10 @@ def sismos(request):
 
 def home(request):
     return redirect(to="index")
+
+def listar_proveedores(request):
+    proveedores = Proveedores.objects.all()
+    datos = {
+        "proveedores" : proveedores
+    }
+    return render(request, 'core/listar_proveedores.html', datos)
