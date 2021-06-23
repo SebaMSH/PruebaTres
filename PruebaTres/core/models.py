@@ -9,7 +9,7 @@ class Pais(models.Model):
         return self.nombrePais
 
 class Proveedores(models.Model):
-    idProveedor = models.IntegerField(primary_key=True, verbose_name="Id de Proveedor")
+    idProveedor = models.AutoField(primary_key=True, verbose_name="Id de Proveedor")
     Nombre = models.CharField(max_length=100, verbose_name="Nombre Proveedor")
     Fono = models.CharField(max_length=12, verbose_name="Telefóno Proveedor")
     Direccion = models.CharField(max_length=100, verbose_name="Dirección Proveedor")
