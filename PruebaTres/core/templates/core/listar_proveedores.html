@@ -26,15 +26,21 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Telefono</th>
                         <th scope="col">Direccion</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Pais</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for pro in proveedores %}
                     <tr>
-                        <td>{{pro.idProveedores}}</td>
+                        <td>{{pro.idProveedor}}</td>
                         <td>{{pro.Nombre}}</td>
                         <td>{{pro.Fono}}</td>
-                        <td>{{pro.Direccion}}</td>        
+                        <td>{{pro.Direccion}}</td>
+                        <td>{{pro.Mail}}</td>
+                        <td>{{pro.Pass}}</td>        
+                        <td>{{pro.IdPais}}</td>        
                     </tr>
                     {% endfor %}  
                 </tbody>
