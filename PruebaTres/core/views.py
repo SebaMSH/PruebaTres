@@ -1,3 +1,4 @@
+from core.forms import ProveedoresForm, PaisForm
 from django.shortcuts import render,redirect
 
 # Create your views here.
@@ -24,3 +25,28 @@ def sismos(request):
 
 def home(request):
     return redirect(to="index")
+
+def ingreso_proveedor(request):
+    datos = {
+        'form' : ProveedoresForm()
+    }
+
+    if request.method == 'POST':
+        formulario = ProveedoresForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            datos['mensaje'] = "Proveedor ingresado correctamente"
+    return render(request, 'core/ingreso_proveedor.html',datos)
+
+def ingreso_pais(request):
+    datos = {
+        'form' : PaisForm()
+    }
+
+    if request.method == 'POST':
+        formulario = PaisForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            datos['mensaje'] = "Pais ingresado correctamente"
+    return render(request, 'core/ingreso_pais.html',datos)
+
