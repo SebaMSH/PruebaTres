@@ -64,7 +64,7 @@ def form_del_proveedor(request, id):
 
     proveedor.delete()
     
-    return redirect(to="home")
+    return redirect(to="listar_proveedor")
 
 def form_mod_proveedor(request, id):
 
