@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from core.forms import ProveedoresForm, PaisForm
 from django.shortcuts import render,redirect
 from .models import Proveedores
@@ -37,6 +38,7 @@ def ingreso_proveedor(request):
         if formulario.is_valid():
             formulario.save()
             datos['mensaje'] = "Proveedor ingresado correctamente"
+        else: datos['mensaje'] = "Datos ingresado no validos"
     return render(request, 'core/ingreso_proveedor.html',datos)
 
 def ingreso_pais(request):
