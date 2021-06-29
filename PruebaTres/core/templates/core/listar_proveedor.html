@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Tablazo</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static  'mycss/estilo.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static  'core/mycss/estilo.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
 </head>
 
 <body>
@@ -43,9 +43,6 @@
                         <a class="nav-link" href="{% url 'contacto' %}">Contactanos</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'ingreso_pais' %}">Pais</a>
-                    </li>
-                    <li class="nav-item active">
                         <a class="nav-link" href="{% url 'listar_proveedor' %}">Listar Proveedores</a>
                     </li>
                 </ul>
@@ -57,7 +54,7 @@
             <h1>Listado de Proveedores</h1>
         </div>
         <div class="row">
-            <table class="table table-hover table-dark">
+            <table class="table table-hover table-bordered">
                 <thead>
                     <tr>
                         <!-- <th scope="col" style="width: 350px;"></th> -->
